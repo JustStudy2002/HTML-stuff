@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+    *{
+        padding:0;
+        margin:0;
+    }
+    
+    html, body{
+        height: 100%;
+    }
+    
+      #trail{
+            position: fixed;
+            transition: transform 0.23s;
+            pointer-events: none;
+            padding: 5px;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0;
+            transition: opacity 0.2s linear, padding 0.2s linear;
+            z-index: 1;
+        }
+       
+    form{
+        position: relative;
+        top: 20%;
+        left: 10%;
+        background: #e1c4ff;
+        height: 50%;
+        width: 80%;
+        border-radius: 20%;
+        box-sizing:border-box;
+        box-shadow: 0 0 8vw 0.8vw white;
+        display:flex;
+        flex-direction:column;
+        padding: 5% 0;
+    }
+    
+    h2{
+        text-align: center;
+        position: relative;
+        margin: auto; 
+        color: purple;
+        font-size: 7vw;
+    }
+    
+    input{
+        	width:70%;
+        	margin:auto;
+        	padding:3%;
+        	background: #d2afff;
+        	border:none;
+        	border-radius: 9vw;
+        	font-size: 3.5vw;
+        }
+        
+    input::placeholder{
+        	color:black;
+        }
+        
+    button{
+        	width:30%;
+        	margin:auto;
+        	padding:4%;
+        	border:none;
+        	background:purple;
+        	border-radius: 3vw;
+        	color:white;
+        	text-transform:capitalize;
+        	font-size: 3vw;
+        	} 
+</style>
+<script>
+    document.addEventListener('mousemove',           function(ev){
+        var trail = document.getElementById('trail');
+        trail.style.transform = 'translateY('+(ev.clientY)+'px)';
+        trail.style.transform += 'translateX('+(ev.clientX)+'px)';    
+        trail.style.opacity = "1";   
+        trail.style.padding = "20px";   
+
+        setTimeout(function() {
+            trail.style.opacity = "0";   
+            trail.style.padding = "5px";   
+    }, 100); 
+     },false);  
+     
+     /************** SUMBIT FUNC ****************/
+     
+    function lala(){
+    
+        const u = document.getElementById('u').value;
+        const p = document.getElementById('p').value;
+        
+        if(u === ""){
+            alert("Enter username");
+        }      
+        else if(p === ""){
+            alert("Enter password");
+        }
+        else if(p.length<8){
+            alert("Password should atleast be 8 charcaters long.");
+        } 
+        else{
+            alert("Login successfully");
+        }//else ends 
+    } // func ends
+</script>
+ </head>
+<body bgcolor="#e6d7ff">
+    <div id="trail"></div>
+    <form id="form" method="GET">
+        <h2>Login Page</h2>
+        <input type="text" id="u" placeholder="username">
+        <input type="password" id="p" placeholder="password">
+        <button type="submit" onclick="lala()">Log in</button>
+    </form>
+</body>
+</html>
